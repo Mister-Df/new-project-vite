@@ -9,7 +9,7 @@ export default function MenuCommand() {
   const products = useSelector(state => state.product)
   const inputValue = useParams()
   const dispatch = useDispatch()
-  // console.log(products);
+  
 
 
   return (
