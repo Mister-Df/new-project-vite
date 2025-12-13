@@ -40,7 +40,7 @@ export default function LoginForm() {
         <button
         
           className='bg-amber-500 rounded-3 p-2 container
-           hover:text-amber-500 hover:bg-amber-50'>
+           hover:text-amber-500 hover:border-1 hover:border-amber-500 hover:bg-amber-50'>
           accédez à votre aspace
         </button>
       </form>

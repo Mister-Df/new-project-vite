@@ -5,21 +5,21 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MenuNavbar from './componernt/pagemenu/MenuNavbar.jsx';
-import LoginForm from './componernt/pageLogin/LoginForm.jsx';
-import MenuCommand from './componernt/pagemenu/MenuCommand.jsx';
-import Error from './componernt/pagemenu/Error.jsx';
+import { Provider } from 'react-redux';
+import { store } from './componernt/pagemenu/products/store.js';
+import ThemProvider from './ThemProvider.jsx';
+
 
 createRoot(document.getElementById('root')).render(
+  <ThemProvider>
   <StrictMode>
-    <BrowserRouter>
-      <App />
-      <Routes>
-        {/* <Route path='/' element={<LoginForm />} /> */}
-        <Route path='/navbar/:inputName' element={<MenuNavbar />} />
-        <Route path='*' element={<Error />} />
-        {/* <Route path='/navbar/:inputName' element={<MenuNavbar />} /> */}
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </StrictMode>,
+  </ThemProvider>
 )
+
+console.log(store);
