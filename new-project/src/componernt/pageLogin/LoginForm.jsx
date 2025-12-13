@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RiAccountCircleLine } from "react-icons/ri";
 import React from 'react';
 import { Formik } from 'formik';
@@ -10,20 +10,28 @@ export default function LoginForm() {
 
   const navigate = useNavigate()
 
-  const [name, setName] = useState()
+  const [name, setName] = useState('')
   const [validate, setValidate] = useState(false)
 
   function handleSummit(e) {
     e.preventDefault()
     if (name.trim() !== '') {
       alert(`Bonjour ${name}`)
+      localStorage.setItem('username', name)
     }
     navigate(`navbar/${name}`)
     setName('')
     setValidate(true)
   }
 
-
+  useEffect(() => {
+    const save = localStorage.getItem('username')
+    if (save) {
+      navigate(`navbar/${save}`)
+    }
+  }, [])
+  
+  
 
 
   return (
@@ -40,7 +48,7 @@ export default function LoginForm() {
         <button
         
           className='bg-amber-500 rounded-3 p-2 container
-           hover:text-amber-500 hover:bg-amber-50'>
+           hover:text-amber-500 hover:border-1 hover:border-amber-500 hover:bg-amber-50'>
           accédez à votre aspace
         </button>
       </form>
